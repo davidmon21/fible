@@ -1,0 +1,14 @@
+{% block header %}
+  <h1>{% block title %}Books{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% for book in books %}
+    <p>{{ book }}</p>
+    {% for scrip in books[book] %}
+    <p>{{ scrip.name }}</p>
+    <p>{{ scrip.osis_name }}</p>
+    <p>{{ scrip.preferred_abbreviation }}</p>
+    {% endfor %}
+  {% endfor %}
+{% endblock %}
