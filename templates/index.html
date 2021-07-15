@@ -1,3 +1,12 @@
+<form name="ver">
+  <select name="version" method="GET" action="/">
+    {% for version in collections.collection() %}
+    <option value= "{{version}}" SELECTED>{{version}}</option>"
+    {% endfor %}
+  </select>
+  <button value="submit">submit</button>
+</form>
+
 {% block header %}
   <h1>{% block title %}Books{% endblock %}</h1>
 {% endblock %}

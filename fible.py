@@ -10,10 +10,15 @@ from werkzeug.exceptions import abort
 
 bp = Blueprint('fible', __name__)
 
-@bp.route('/booklist')
-def index():
-    bible = bibles.Bible("DRC")
-    return render_template('index.html', books = bible.return_books())
+@bp.route('/')
+def main():
+    collection = bibles.Bibles("/Users/david/.sword")
+    if request.args != None:
+        bible = collection.ready_bible(request.args["version"])
+    else:
+        bible = collection.ready_bible("DRC")
+
+    return render_template('index.html', books = collection.return_books(), bible = bible, collections = collection )
 
 
 @bp.route('/script')

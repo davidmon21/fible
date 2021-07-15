@@ -3,28 +3,23 @@ from pysword.modules import SwordModules
 from pysword.bible import SwordBible
 import pysword
 
-class Bible:
-    bible = None
-    def __init__(self, name):
-        bible_collection = Bibles("/Users/david/.sword")
-        self.bible = bible_collection.get_book(name)
+class Bibles:
+    open_bible = None
+    bible_collection = None
+    sword = None
+    def __init__(self, bibles_path):
+        self.sword = SwordModules(bibles_path)
+        self.bible_collection = self.sword.parse_modules()
+
+    def collection(self):
+        return self.bible_collection
+    
+    def ready_bible(self,version):
+        self.open_bible = self.sword.get_bible_from_module(version)
+        return self.open_bible
     
     def _populate(self):
         pass
 
     def return_books(self):
-        return self.bible.get_structure().get_books()
-
-class Bibles:
-    bibles = DefaultDict
-    configuration = DefaultDict
-    modules = None
-    def __init__(self, configer):
-        self._process_config(configer)
-
-    def _process_config(self, configer):
-        self.modules = SwordModules(configer)
-        self.modules.parse_modules()
-    
-    def get_book(self, name):
-        return self.modules.get_bible_from_module(name)
+        return self.open_bible.get_structure().get_books()
