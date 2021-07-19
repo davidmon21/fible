@@ -1,23 +1,46 @@
 <form name="ver">
-  <select name="version" method="GET" action="/">
+  <select name="version">
     {% for version in collections.collection() %}
-    <option value= "{{version}}" SELECTED>{{version}}</option>"
+    <option value= "{{version}}" 
+    {% if version == sversion %}
+      SELECTED
+    {% endif %}
+    >{{version}}</option>
     {% endfor %}
+  </select>
+  <select name="book">
+    {% for scrip in books['ot'] %}
+      <option value="{{scrip.osis_name}}" 
+      {% if scrip.osis_name == book %}
+      SELECTED
+      {% endif %}
+      >{{scrip.osis_name}}</option>
+    {% endfor %}
+    {% for scrip in books['nt'] %}
+      <option value="{{scrip.osis_name}}"
+      {% if scrip.osis_name == book %}
+      SELECTED
+      {% endif %}
+      >{{scrip.osis_name}}</option>
+    {% endfor %}   
+  </select>
+  <select name="chapter">
+    {% for chapter in chapters %}
+      <option value="{{chapter}}" 
+      {% if chapter|int == chap|int %}
+      SELECTED
+      {% endif %}
+      >{{chapter}}</option>
+    {% endfor %}   
   </select>
   <button value="submit">submit</button>
 </form>
 
 {% block header %}
   <h1>{% block title %}Books{% endblock %}</h1>
+  {{text}}
 {% endblock %}
 
 {% block content %}
-  {% for book in books %}
-    <p>{{ book }}</p>
-    {% for scrip in books[book] %}
-    <p>{{ scrip.name }}</p>
-    <p>{{ scrip.osis_name }}</p>
-    <p>{{ scrip.preferred_abbreviation }}</p>
-    {% endfor %}
-  {% endfor %}
+
 {% endblock %}

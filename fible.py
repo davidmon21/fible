@@ -13,12 +13,23 @@ bp = Blueprint('fible', __name__)
 @bp.route('/')
 def main():
     collection = bibles.Bibles("/Users/david/.sword")
-    if request.args != None:
+    print(request.args)
+    if "version" in request.args:
         bible = collection.ready_bible(request.args["version"])
+        book = request.args["book"]
+        sversion = request.args["version"]
     else:
         bible = collection.ready_bible("DRC")
-
-    return render_template('index.html', books = collection.return_books(), bible = bible, collections = collection )
+        book = "Matt"
+        sversion = "DRC"
+    if "chapter" in request.args:
+        chap = request.args["chapter"]
+        text = bible.get(books=[book], chapters=[int(request.args["chapter"])])
+    else:
+        text = bible.get(books=[book], chapters=[1])
+        chap = 1
+    chapters = range(1,bible.get_structure().find_book(book)[1].num_chapters+1)
+    return render_template('index.html', books = collection.return_books(), bible = bible, collections = collection, book = book, chap = chap, text = text, sversion = sversion, chapters = chapters)
 
 
 @bp.route('/script')
