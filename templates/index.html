@@ -1,33 +1,33 @@
 <form name="ver">
   <select name="version">
-    {% for version in collections.collection() %}
+    {% for version in data["collection"] %}
     <option value= "{{version}}" 
-    {% if version == sversion %}
+    {% if version == data["version"] %}
       SELECTED
     {% endif %}
     >{{version}}</option>
     {% endfor %}
   </select>
   <select name="book">
-    {% for scrip in books['ot'] %}
+    {% for scrip in data["books"]['ot'] %}
       <option value="{{scrip.osis_name}}" 
-      {% if scrip.osis_name == book %}
+      {% if scrip.osis_name == data["book"] %}
       SELECTED
       {% endif %}
       >{{scrip.osis_name}}</option>
     {% endfor %}
-    {% for scrip in books['nt'] %}
+    {% for scrip in data["books"]['nt'] %}
       <option value="{{scrip.osis_name}}"
-      {% if scrip.osis_name == book %}
+      {% if scrip.osis_name == data["book"] %}
       SELECTED
       {% endif %}
       >{{scrip.osis_name}}</option>
     {% endfor %}   
   </select>
   <select name="chapter">
-    {% for chapter in chapters %}
+    {% for chapter in data["chapters"] %}
       <option value="{{chapter}}" 
-      {% if chapter|int == chap|int %}
+      {% if chapter|int == data["chapter"]|int %}
       SELECTED
       {% endif %}
       >{{chapter}}</option>
@@ -37,10 +37,14 @@
 </form>
 
 {% block header %}
-  <h1>{% block title %}Books{% endblock %}</h1>
-  {{text}}
+  <h1>{% block title %}{{data["name"]}}{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-
+<p>
+{% for verse in data["verses"] %}
+{{verse}} {{data["text"][verse-data["verses"][0]]+"\n"}}
+<br>
+{% endfor %}
+</p>
 {% endblock %}
