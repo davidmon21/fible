@@ -33,6 +33,19 @@
       >{{chapter}}</option>
     {% endfor %}   
   </select>
+  <br>
+  <p>Verses:</p>
+  <select name="sverse">
+    {% for verse in data["verses"] %}
+      <option value="{{verse}}">{{verse}}</option>
+    {% endfor %}  
+  </select> - 
+  <select name="everse">
+    <option value="All" SELECTED>All</option>
+    {% for verse in data["verses"] %}
+      <option value="{{verse}}">{{verse}}</option>
+    {% endfor %}   
+  </select>
   <button value="submit">submit</button>
 </form>
 
@@ -42,8 +55,8 @@
 
 {% block content %}
 <p>
-{% for verse in data["verses"] %}
-{{verse}} {{data["text"][verse-data["verses"][0]]+"\n"}}
+{% for verse in data["selected_verses"] %}
+{{verse}} {{data["text"][verse-data["selected_verses"][0]]+"\n"}}
 <br>
 {% endfor %}
 </p>
