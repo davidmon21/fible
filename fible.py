@@ -1,3 +1,4 @@
+from flask.helpers import make_response
 from pysword.modules import SwordModules
 from pysword.bible import SwordBible
 import pysword
@@ -24,4 +25,10 @@ def main():
         print(request.args["sverse"])
     if "chapter" in request.args: data = collection.return_page_data(book, version, [int(request.args["chapter"])], verses) 
     else: data = collection.return_page_data(book, version)
+    if "type" in request.args:
+        if request.args["type"] == "text":
+            response = make_response("\n".join(data["text"]), 200)
+            response.mimetype = "text/plain"
+            return response
+    
     return render_template('index.html', data = data)
