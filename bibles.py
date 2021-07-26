@@ -16,11 +16,9 @@ class Bibles:
         textual_data["books"] = bible.get_structure().get_books()
         textual_data["book"] = "Matt"
         for title in textual_data["books"]['ot']:
-            print(textual_data["books"])
             if title.osis_name.lower() == book.lower():
                 textual_data["book"] = book
         for title in textual_data["books"]['nt']:
-            print(textual_data["books"])
             if title.osis_name.lower() == book.lower():
                 textual_data["book"] = book
         textual_data["chapters"] = range(1,bible.get_structure().find_book(book)[1].num_chapters+1)
