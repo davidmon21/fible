@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="timeline">
+{% set count = 2%}
+{% for event in events %}
+    {% if loop.index%2 == 0 %}
+    <div class="container left">
+    {% else %}
+    <div class="container right">
+    {% endif %}
+      <div class="content">
+        <h2>{{event}}</h2>
+        <h3>{{events[event][0]}}</h3>
+        <p>
+          {{events[event][1]}}
+        </p>
+        <p><a href="{{events[event][2]}}">Source</a></p>
+      </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

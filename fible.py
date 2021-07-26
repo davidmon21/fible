@@ -3,6 +3,7 @@ from pysword.modules import SwordModules
 from pysword.bible import SwordBible
 import pysword
 from . import bibles
+import json
 
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for
@@ -11,10 +12,14 @@ from werkzeug.exceptions import abort
 
 bp = Blueprint('fible', __name__)
 
-@bp.route('/')
-def main():
-    collection = bibles.Bibles("/Users/david/.sword")
+#make this route settable
+
+@bp.route('/bible')
+def bible():
+    #make this path settable
+    collection = bibles.Bibles("./.sword")
     print(request.args)
+    #make default book, version settable
     version = "DRC"
     book = "Matt"
     if "version" in request.args: version = request.args["version"] 
@@ -31,4 +36,17 @@ def main():
             response.mimetype = "text/plain"
             return response
     
-    return render_template('index.html', data = data)
+    return render_template('bible.html', data = data)
+
+@bp.route('/')
+def index():
+    if "page" in request.args:
+        if request.args["page"] == "timeline":
+            with open('events.json', 'r') as f:
+                events = json.load(f)
+            
+            return render_template("timeline.html", events=events)
+        else:
+            return render_template(request.args["page"]+'.html')
+    else:
+        return render_template("index.html")

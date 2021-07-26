@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+<center>
+<div class="text">
+<br>
+<br>
+<form name="ver">
+  <select name="version">
+    {% for version in data["collection"] %}
+    <option value= "{{version}}" 
+    {% if version == data["version"] %}
+      SELECTED
+    {% endif %}
+    >{{version}}</option>
+    {% endfor %}
+  </select>
+  <select name="book">
+    {% for scrip in data["books"]['ot'] %}
+      <option value="{{scrip.osis_name}}" 
+      {% if scrip.osis_name == data["book"] %}
+      SELECTED
+      {% endif %}
+      >{{scrip.osis_name}}</option>
+    {% endfor %}
+    {% for scrip in data["books"]['nt'] %}
+      <option value="{{scrip.osis_name}}"
+      {% if scrip.osis_name == data["book"] %}
+      SELECTED
+      {% endif %}
+      >{{scrip.osis_name}}</option>
+    {% endfor %}   
+  </select>
+  <select name="chapter">
+    {% for chapter in data["chapters"] %}
+      <option value="{{chapter}}" 
+      {% if chapter|int == data["chapter"]|int %}
+      SELECTED
+      {% endif %}
+      >{{chapter}}</option>
+    {% endfor %}   
+  </select>
+  <br>
+  <p>Verses:</p>
+  <select name="sverse">
+    {% for verse in data["verses"] %}
+      <option value="{{verse}}">{{verse}}</option>
+    {% endfor %}  
+  </select> - 
+  <select name="everse">
+    <option value="All" SELECTED>All</option>
+    {% for verse in data["verses"] %}
+      <option value="{{verse}}">{{verse}}</option>
+    {% endfor %}   
+  </select>
+  <button value="submit">submit</button>
+  <br><br>
+</form>
+</div>
+</center>
+<article>
+<br>
+<br>
+<center><h2>{% block title %}{{data["name"]}}{% endblock %} {{data["chapter"]}}</h2></center>
+{% for verse in data["selected_verses"] %}
+<p><sup>{{verse}}</sup>{{data["text"][verse-data["selected_verses"][0]]+"\n"}}</p>
+{% endfor %}
+</article>
+{% endblock %}
