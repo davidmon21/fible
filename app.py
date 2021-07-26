@@ -1,8 +1,4 @@
 from flask.helpers import make_response
-from pysword.modules import SwordModules
-from typing import DefaultDict
-from pysword.bible import SwordBible
-import pysword
 import json
 import os
 from bibles import Bibles
