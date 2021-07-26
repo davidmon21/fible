@@ -1,27 +1,16 @@
 from flask.helpers import make_response
 from pysword.modules import SwordModules
+from typing import DefaultDict
 from pysword.bible import SwordBible
 import pysword
 import json
-
-#from flask import (
-#    Blueprint, flash, g, redirect, render_template, request, url_for
-#)
-#from werkzeug.exceptions import abort
-
-#bp = Blueprint('fible', __name__)
-
-#make this route settable
 import os
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
-from typing import DefaultDict
-from pysword.modules import SwordModules
-from pysword.bible import SwordBible
-import pysword
+
 
 class Bibles:
     bible_collection = None
