@@ -5,16 +5,23 @@ import pysword
 from . import bibles
 import json
 
-from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
-)
-from werkzeug.exceptions import abort
+#from flask import (
+#    Blueprint, flash, g, redirect, render_template, request, url_for
+#)
+#from werkzeug.exceptions import abort
 
-bp = Blueprint('fible', __name__)
+#bp = Blueprint('fible', __name__)
 
 #make this route settable
+import os
+from flask import Flask, render_template, request, redirect, url_for
 
-@bp.route('/bible')
+app = Flask(__name__)
+
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
+
+
+@app.route('/bible')
 def bible():
     #make this path settable
     collection = bibles.Bibles("./.sword")
@@ -38,7 +45,7 @@ def bible():
     
     return render_template('bible.html', data = data)
 
-@bp.route('/')
+@app.route('/')
 def index():
     if "page" in request.args:
         if request.args["page"] == "timeline":
@@ -50,3 +57,6 @@ def index():
             return render_template(request.args["page"]+'.html')
     else:
         return render_template("index.html")
+
+if __name__ == '__main__':
+    app.run(debug=True)
