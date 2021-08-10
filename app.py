@@ -2,6 +2,7 @@ from flask.helpers import make_response
 import json
 import os
 from bibles import Bibles
+from prayers import Prayers
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
@@ -30,12 +31,28 @@ def bible():
     
     return render_template('bible.html', data = data)
 
+@app.route('/prayer')
+def prayer():
+    prayer_builder = Prayers()
+    prayer="OurFather"
+    supplemental=None
+    if "prayer" in request.args:
+        if request.args["prayer"] in prayer_builder.prayers:
+            prayer = request.args["prayer"]
+            if "supl" in request.args:
+                supplemental = request.args["supl"]
+            compiled_prayer = prayer_builder.compile_prayer(prayer,supplemental)
+            return render_template('prayer.html', prayer = compiled_prayer)
+
+
+
 @app.route('/')
 def index():
     if "page" in request.args:
         if request.args["page"] == "timeline":
             with open('events.json', 'r') as f:
                 events = json.load(f)
+            
             
             return render_template("timeline.html", events=events)
         else:

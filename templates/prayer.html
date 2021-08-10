@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<center>
+<article>
+<br>
+<br>
+<center><h2>{% block title %}{{prayer["name"]}}{% endblock %}</h2></center>
+
+<p>{{prayer["text"]}}</p>
+</article>
+</center>
+{% endblock %}
