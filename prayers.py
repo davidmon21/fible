@@ -9,12 +9,12 @@ class Prayers:
     def compile_prayer(self,name,supplemental):
         prayer = DefaultDict()
         prayer["name"] = self.prayer_data[name]["NiceName"]
-        prayer["text"]=""
-        for item in self.prayer_data[name]["Order"]:
-            if item == "self":
-                prayer["text"]+=self.prayer_data[name]["self"]+"\n"
+        prayer["text"]=[]
+        for key,item in self.prayer_data[name]["Order"].items():
+            if key == "self":
+                prayer["text"]+=[self.prayer_data[name][key]]*item
             else:
-                prayer["text"]+=self.prayer_data[item]["self"]+"\n"
+                prayer["text"]+=[self.compile_prayer(key,supplemental)]*item
         return prayer
 
 

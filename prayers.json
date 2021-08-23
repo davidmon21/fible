@@ -1,14 +1,59 @@
 {
     "OurFather": {
         "NiceName": "Our Father",
-        "Order": ["self"], 
+        "Order": {"self": 1}, 
         "Supplemental": [], 
         "self": "Our Father, who art in heaven hallowed be thy name; thy kingdom come; thy will be done on earth as it is in heaven. Give us this day our daily bread and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil. Amen."
     }, 
     "EternalFather": {
         "NiceName": "Eternal Father",
-        "Order": ["self"], 
+        "Order": {"self": 1}, 
         "Supplemental": [], 
         "self": "Eternal Father, I offer you the Body and Blood, Soul and Divinity of Your Dearly Beloved Son, Our Lord, Jesus Christ, in atonement for our sins and those of the whole world."
+    },
+    "HailMary": {
+        "NiceName": "Hail Mary",
+        "Order": {"self": 1},
+        "Supplemental": [],
+        "self": "Hail Mary, full of grace. The Lord is with thee. Blessed art thou amongst women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death, Amen."
+    },
+    "YouExpired": {
+        "NiceName": "St Faustinas Prayer",
+        "Order": {"self": 1},
+        "Supplemental": [],
+        "self": "You expired, Jesus, but the source of life gushed forth for souls, and the ocean of mercy opened up for the whole world. O Fount of Life, unfathomable Divine Mercy, envelop the whole world and empty Yourself out upon us. \n  (Repeat three times)  \n O Blood and Water, which gushed forth from the Heart of Jesus as a fount of mercy for us, I trust in You!" 
+    },
+    "ApostlesCreed": {
+        "NiceName": "Apostles Creed",
+        "Order": {"self": 1},
+        "Supplemental": [],
+        "self": "I believe in God, the Father almighty, Creator of heaven and earth, and in Jesus Christ, His only Son, our Lord, who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died and was buried; He descended into hell; on the third day He rose again from the dead; He ascended into heaven, and is seated at the right hand of God the Father almighty; from there He will come to judge the living and the dead. I believe in the Holy Spirit, the holy catholic Church, the communion of saints, the forgiveness of sins, the resurrection of the body, and life everlasting. Amen."
+    },
+    "Mercy": {
+        "NiceName": "For his sake",
+        "Order": {"self": 1},
+        "Supplemental": [],
+        "self": "For the sake of His sorrowful Passion, have mercy on us and on the whole world."
+    },
+    "HolyGod": {
+        "NiceName": "Holy God",
+        "Order": {"self": 3},
+        "Supplemental": [],
+        "self": "Holy God, Holy Mighty One, Holy Immortal One, have mercy on us and on the whole world."
+    },
+    "EternalGod": {
+        "NiceName": "Eternal God",
+        "Order": {"self": 1},
+        "Supplemental": [],
+        "self": "Eternal God, in whom mercy is endless and the treasury of compassion — inexhaustible, look kindly upon us and increase Your mercy in us, that in difficult moments we might not despair nor become despondent, but with great confidence submit ourselves to Your holy will, which is Love and Mercy itself."
+    },
+    "DivineMercy": {
+        "NiceName": "Divine Mercy Chaplet",
+        "Order": {"YouExpired": 1, "OurFather": 1, "HailMary": 1, "ApostlesCreed": 1, "MercyDecade": 10 }
+    },
+    "MercyDecade": {
+        "NiceName": "Divine Mercy Chaplet",
+        "Order": {"EternalFather": 1, "Mercy": 10},
+        "Supplemental": []
     }
 }

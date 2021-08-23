@@ -2,11 +2,10 @@
 {% block content %}
 <center>
 <article>
-<br>
-<br>
 <center><h2>{% block title %}{{prayer["name"]}}{% endblock %}</h2></center>
-
-<p>{{prayer["text"]}}</p>
+{% for line in prayer["text"] %}
+<p style="white-space: pre-wrap;">{{line}}</p>
+{% endfor %}
 </article>
 </center>
 {% endblock %}
