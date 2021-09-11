@@ -36,13 +36,15 @@ def prayer():
     prayer_builder = Prayers()
     prayer="OurFather"
     supplemental=None
+    
     if "prayer" in request.args:
-        if request.args["prayer"] in prayer_builder.prayers:
-            prayer = request.args["prayer"]
-            if "supl" in request.args:
-                supplemental = request.args["supl"]
-            compiled_prayer = prayer_builder.compile_prayer(prayer,supplemental)
-            return render_template('prayer.html', prayer = compiled_prayer)
+        prayer = request.args["prayer"]
+    if "supl" in request.args:
+        supplemental = request.args["supl"]
+    
+    if prayer in prayer_builder.prayers.keys():
+        compiled_prayer = prayer_builder.compile_prayer(prayer,supplemental)
+        return render_template('prayer.html', prayer = compiled_prayer, prayers = prayer_builder.prayers)
 
 
 

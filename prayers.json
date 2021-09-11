@@ -49,11 +49,29 @@
     },
     "DivineMercy": {
         "NiceName": "Divine Mercy Chaplet",
-        "Order": {"YouExpired": 1, "OurFather": 1, "HailMary": 1, "ApostlesCreed": 1, "MercyDecade": 10 }
+        "Order": {"YouExpired": 1, "OurFather": 1, "HailMary": 1, "ApostlesCreed": 1, "MercyDecade": 10,  "HolyGod":1, "EternalGod": 1 }
     },
     "MercyDecade": {
-        "NiceName": "Divine Mercy Chaplet",
+        "NiceName": "hidden",
         "Order": {"EternalFather": 1, "Mercy": 10},
         "Supplemental": []
+    },
+    "HailHolyQueen": {
+        "NiceName": "Hail Holy Queen",
+        "Order": {"self": 1},
+        "Supplemental": [],
+        "self": "Hail Holy Queen, Mother of Mercy, our Life, our Sweetness, and our hope. To thee we cry, poor banished children of Eve. To thee we send up our sighs, mourning and weeping in this vale of tears. Turn then most gracious advocate, Thine eyes of mercy toward us, and after this, our exile, show unto us, the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary. Pray for us O Holy Mother of God, That we may be made worthy of the promises of Christ. Amen."
+    },
+    "OhMyJesus": {
+        "NiceName": "Oh My Jesus",
+        "Order": {"self": 1},
+        "Supplemental": [],
+        "self": "O my Jesus, forgive us our sins. Save us from the fires of hell. Lead all souls into heaven, especially those in most need of thy mercy. Amen."
+    },
+    "RosaryFinalPrayer": {
+        "NiceName": "hidden",
+        "Order": {"self": 1},
+        "Supplemental": [],
+        "self": "Let us pray. O God, whose only begotten Son, by His life, death, and resurrection, has purchased for us the rewards of eternal life, grant, we beseech Thee, that meditating upon these mysteries of the Most Holy Rosary of the Blessed Virgin Mary, we may imitate what they contain and obtain what they promise, through the same Christ Our Lord. Amen."
     }
 }

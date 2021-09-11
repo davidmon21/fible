@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
-<center>
+<div class="text">
+    <br>
+    <br>
+    <center>
+    <form name="ver">
+        Prayer:
+        <select name="prayer">
+            {% for key in prayers %}
+            {% if prayers[key]["NiceName"] != "hidden" %}
+            <option value="{{key}}" 
+            {% if prayers[key]["NiceName"] == prayer["name"] %}
+                SELECTED
+            {% endif %}
+            >{{prayers[key]["NiceName"]}}</option>
+            {% endif %}
+            {% endfor %}   
+        </select>
+        <button value="submit">submit</button>
+        <br><br>
+    </form>
+    </center>
+</div>
 <article>
 <center><h2>{% block title %}{{prayer["name"]}}{% endblock %}</h2></center>
 {% for line in prayer["text"] %}
